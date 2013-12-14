@@ -198,6 +198,9 @@ Tooltip.prototype.changeClassType = function (propName, newClass) {
 Tooltip.prototype.updateSize = function () {
 	if (this.hidden) {
 		this.element.style.visibility = 'hidden';
+		if (this.options.hiddenClass) {
+			this.classes.remove(this.options.hiddenClass);
+		}
 		body.appendChild(this.element);
 	}
 	this.width = this.element.offsetWidth;
@@ -208,6 +211,9 @@ Tooltip.prototype.updateSize = function () {
 	if (this.hidden) {
 		body.removeChild(this.element);
 		this.element.style.visibility = '';
+		if (this.options.hiddenClass) {
+			this.classes.add(this.options.hiddenClass);
+		}
 	} else {
 		this.position();
 	}
