@@ -1,4 +1,4 @@
-# [Tooltip](http://darsa.in/sly)
+# [Tooltip](http://darsa.in/tooltip)
 
 JavaScript library for tooltips designed for speed and responsiveness. Uses CSS transitions for effects.
 
