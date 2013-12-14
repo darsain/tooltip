@@ -1,0 +1,29 @@
+{
+	"name": "tooltip",
+	"repo": "darsain/tooltip",
+	"description": "Tooltip component.",
+	"version": "0.1.0",
+	"keywords": [
+		"tooltip",
+		"tip",
+		"ui"
+	],
+	"dependencies": {
+		"darsain/event": "*",
+		"darsain/position": "*",
+		"component/classes": "*",
+		"component/indexof": "*"
+	},
+	"development": {
+		"components/jquery": "1.10.2"
+	},
+	"scripts": [
+		"index.js"
+	],
+	"styles": [
+		"tooltip.css",
+		"transitions.css",
+		"types.css"
+	],
+	"license": "MIT"
+}

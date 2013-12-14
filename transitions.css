@@ -1,0 +1,103 @@
+/* Fade */
+.tooltip.fade { transition: opacity 100ms ease-out; }
+.tooltip.fade.hidden { opacity: 0; transition-duration: 200ms; }
+
+/* Slide */
+.tooltip.slide {
+	opacity: 1;
+	-webkit-transform: none;
+	transform: none;
+	transition: -webkit-transform 100ms ease-out;
+	transition: transform 100ms ease-out;
+	transition-property: -webkit-transform, opacity;
+	transition-property: transform, opacity;
+}
+.tooltip.slide.hidden {
+	opacity: 0;
+	transition-duration: 200ms;
+}
+.tooltip.slide.hidden.top,
+.tooltip.slide.hidden.top-left,
+.tooltip.slide.hidden.top-right {
+	-webkit-transform: translateY(15px);
+	transform: translateY(15px);
+}
+.tooltip.slide.hidden.bottom,
+.tooltip.slide.hidden.bottom-left,
+.tooltip.slide.hidden.bottom-right {
+	-webkit-transform: translateY(-15px);
+	transform: translateY(-15px);
+}
+.tooltip.slide.hidden.left,
+.tooltip.slide.hidden.left-top,
+.tooltip.slide.hidden.left-bottom {
+	-webkit-transform: translateX(15px);
+	transform: translateX(15px);
+}
+.tooltip.slide.hidden.right,
+.tooltip.slide.hidden.right-top,
+.tooltip.slide.hidden.right-bottom {
+	-webkit-transform: translateX(-15px);
+	transform: translateX(-15px);
+}
+
+/* Grow */
+.tooltip.grow {
+	-webkit-transform: none;
+	transform: none;
+	transition: -webkit-transform 100ms ease-out;
+	transition: transform 100ms ease-out;
+}
+.tooltip.grow.hidden {
+	-webkit-transform: scale(0);
+	transform: scale(0);
+	transition-duration: 200ms;
+}
+.tooltip.grow.hidden.top {
+	-webkit-transform: translateY(60%) scale(0);
+	transform: translateY(60%) scale(0);
+}
+.tooltip.grow.hidden.top-left {
+	-webkit-transform: translateY(60%) translateX(40%) scale(0);
+	transform: translateY(60%) translateX(40%) scale(0);
+}
+.tooltip.grow.hidden.top-right {
+	-webkit-transform: translateY(60%) translateX(-40%) scale(0);
+	transform: translateY(60%) translateX(-40%) scale(0);
+}
+.tooltip.grow.hidden.bottom {
+	-webkit-transform: translateY(-60%) scale(0);
+	transform: translateY(-60%) scale(0);
+}
+.tooltip.grow.hidden.bottom-left {
+	-webkit-transform: translateY(-60%) translateX(40%) scale(0);
+	transform: translateY(-60%) translateX(40%) scale(0);
+}
+.tooltip.grow.hidden.bottom-right {
+	-webkit-transform: translateY(-60%) translateX(-40%) scale(0);
+	transform: translateY(-60%) translateX(-40%) scale(0);
+}
+.tooltip.grow.hidden.left {
+	-webkit-transform: translateX(40%) scale(0);
+	transform: translateX(40%) scale(0);
+}
+.tooltip.grow.hidden.left-top {
+	-webkit-transform: translateX(60%) translateY(40%) scale(0);
+	transform: translateX(60%) translateY(40%) scale(0);
+}
+.tooltip.grow.hidden.left-bottom {
+	-webkit-transform: translateX(60%) translateY(-40%) scale(0);
+	transform: translateX(60%) translateY(-40%) scale(0);
+}
+.tooltip.grow.hidden.right {
+	-webkit-transform: translateX(-60%) scale(0);
+	transform: translateX(-60%) scale(0);
+}
+.tooltip.grow.hidden.right-top {
+	-webkit-transform: translateX(-60%) translateY(40%) scale(0);
+	transform: translateX(-60%) translateY(40%) scale(0);
+}
+.tooltip.grow.hidden.right-bottom {
+	-webkit-transform: translateX(-60%) translateY(-40%) scale(0);
+	transform: translateX(-60%) translateY(-40%) scale(0);
+}

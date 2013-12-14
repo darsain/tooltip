@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Tooltip test</title>
+		<link rel="stylesheet" href="../build/build.css">
+		<link rel="stylesheet" href="test.css">
+	</head>
+	<body>
+
+		<div class="wrapper">
+			<div class="target movable">target</div>
+		</div>
+
+		<div class="wrapper controls">
+			<div class="places">
+				<div class="top">
+					<button data-action="place" data-arg="top-left">top-left</button>
+					<button data-action="place" data-arg="top">top</button>
+					<button data-action="place" data-arg="top-right">top-right</button>
+				</div>
+				<div class="left vertical">
+					<button data-action="place" data-arg="left-top">left-top</button>
+					<button data-action="place" data-arg="left">left</button>
+					<button data-action="place" data-arg="left-bottom">left-bottom</button>
+				</div>
+				<div class="right vertical">
+					<button data-action="place" data-arg="right-top">right-top</button>
+					<button data-action="place" data-arg="right">right</button>
+					<button data-action="place" data-arg="right-bottom">right-bottom</button>
+				</div>
+				<div class="bottom">
+					<button data-action="place" data-arg="bottom-left">bottom-left</button>
+					<button data-action="place" data-arg="bottom">bottom</button>
+					<button data-action="place" data-arg="bottom-right">bottom-right</button>
+				</div>
+			</div>
+			<p>
+				<button data-action="toggle">toggle</button>
+				<button data-action="content" data-arg="&lt;img src='http://i.imgur.com/6zBtrUl.png' width='64' height='64' alt='img'&gt;">image</button>
+				<button data-action="content" data-arg="Move the element toward window endges to test the automatic positioning.">text</button>
+			</p>
+			<p>
+				<button data-action="type" data-arg="">none</button>
+				<button data-action="type" data-arg="success">success</button>
+				<button data-action="type" data-arg="warning">warning</button>
+				<button data-action="type" data-arg="error">error</button>
+			</p>
+			<p>
+				<button data-action="effect" data-arg="">none</button>
+				<button data-action="effect" data-arg="fade">fade</button>
+				<button data-action="effect" data-arg="slide">slide</button>
+				<button data-action="effect" data-arg="grow">grow</button>
+			</p>
+		</div>
+
+		<div class="wrapper">
+			<input type="text" placeholder="Focus me!" class="focusable">
+		</div>
+
+		<script src="../build/build.js"></script>
+		<script src="test.js"></script>
+	</body>
+</html>
