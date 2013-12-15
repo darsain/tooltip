@@ -26,7 +26,7 @@ var $ = require('jquery');
 // Focusable test
 (function () {
 	var $target = $('.focusable').eq(0);
-	var tip = new Tooltip('', { place: 'right', typeClass: '' }).attachTo($target[0]);
+	var tip = new Tooltip('', { place: 'right', typeClass: '', effectClass: 'slide' }).attachTo($target[0]);
 	var toEnter = 'foo';
 	var value, correct;
 
