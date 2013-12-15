@@ -1,11 +1,14 @@
 /* Fade */
-.tooltip.fade { opacity: 0; transition-duration: 200ms; }
-.tooltip.fade.in { opacity: 1; transition: opacity 100ms ease-out; }
+.tooltip.fade { opacity: 0; transition: opacity 200ms ease-out; }
+.tooltip.fade.in { opacity: 1; transition-duration: 100ms; }
 
 /* Slide */
 .tooltip.slide {
 	opacity: 0;
-	transition-duration: 200ms;
+	transition: -webkit-transform 200ms ease-out;
+	transition: transform 200ms ease-out;
+	transition-property: -webkit-transform, opacity;
+	transition-property: transform, opacity;
 }
 .tooltip.slide.top,
 .tooltip.slide.top-left,
@@ -35,17 +38,15 @@
 	opacity: 1;
 	-webkit-transform: none;
 	transform: none;
-	transition: -webkit-transform 100ms ease-out;
-	transition: transform 100ms ease-out;
-	transition-property: -webkit-transform, opacity;
-	transition-property: transform, opacity;
+	transition-duration: 100ms;
 }
 
 /* Grow */
 .tooltip.grow {
 	-webkit-transform: scale(0);
 	transform: scale(0);
-	transition-duration: 200ms;
+	transition: -webkit-transform 200ms ease-out;
+	transition: transform 200ms ease-out;
 }
 .tooltip.grow.top {
 	-webkit-transform: translateY(60%) scale(0);
@@ -98,6 +99,5 @@
 .tooltip.grow.in {
 	-webkit-transform: none;
 	transform: none;
-	transition: -webkit-transform 100ms ease-out;
-	transition: transform 100ms ease-out;
+	transition-duration: 100ms;
 }
