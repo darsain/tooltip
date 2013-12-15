@@ -139,10 +139,6 @@ Tooltip.prototype._createElement = function () {
 			this.classes.add(this.options[propName]);
 		}
 	}
-	if (this.options.hiddenClass) {
-		this.classes.add(this.options.hiddenClass);
-		this.duration = transitionDuration(this.element);
-	}
 };
 
 /**
@@ -164,10 +160,7 @@ Tooltip.prototype.type = function (name) {
  * @return {Tooltip}
  */
 Tooltip.prototype.effect = function (name) {
-	this.changeClassType('effect', name);
-	// Update transition duration
-	this.duration = transitionDuration(this.element);
-	return this;
+	return this.changeClassType('effect', name);
 };
 
 /**
@@ -198,9 +191,6 @@ Tooltip.prototype.changeClassType = function (propName, newClass) {
 Tooltip.prototype.updateSize = function () {
 	if (this.hidden) {
 		this.element.style.visibility = 'hidden';
-		if (this.options.hiddenClass) {
-			this.classes.remove(this.options.hiddenClass);
-		}
 		body.appendChild(this.element);
 	}
 	this.width = this.element.offsetWidth;
@@ -211,9 +201,6 @@ Tooltip.prototype.updateSize = function () {
 	if (this.hidden) {
 		body.removeChild(this.element);
 		this.element.style.visibility = '';
-		if (this.options.hiddenClass) {
-			this.classes.add(this.options.hiddenClass);
-		}
 	} else {
 		this.position();
 	}
@@ -480,10 +467,12 @@ Tooltip.prototype.show = function (x, y) {
 		this._aware();
 	}
 
-	// Trigger layout and remove hidden class
-	if (this.options.hiddenClass) {
-		void this.element.clientHeight;
-		this.classes.remove(this.options.hiddenClass);
+	// Trigger layout and kick in the transition
+	if (this.options.inClass) {
+		if (this.options.effectClass) {
+			void this.element.clientHeight;
+		}
+		this.classes.add(this.options.inClass);
 	}
 
 	return this;
@@ -500,13 +489,17 @@ Tooltip.prototype.hide = function () {
 	}
 
 	var self = this;
+	var duration = 0;
 
-	// Add hidden class and calculate transition duration if any
-	if (this.options.hiddenClass) {
-		this.classes.add(this.options.hiddenClass);
+	// Remove .in class and calculate transition duration if any
+	if (this.options.inClass) {
+		this.classes.remove(this.options.inClass);
+		if (this.options.effectClass) {
+			duration = transitionDuration(this.element);
+		}
 	}
 
-	// Remove tip from window resize/scroll awareness
+	// Remove tip from window resize awareness
 	if (this.attachedTo) {
 		this._unaware();
 	}
@@ -517,7 +510,7 @@ Tooltip.prototype.hide = function () {
 		self.aIndex = 0;
 		body.removeChild(self.element);
 		self.hidden = 1;
-	}, this.duration);
+	}, duration);
 
 	return this;
 };
@@ -609,7 +602,7 @@ Tooltip.defaults = {
 	baseClass:   'tooltip', // Base tooltip class name.
 	typeClass:   null,      // Type tooltip class name.
 	effectClass: null,      // Effect tooltip class name.
-	hiddenClass: 'hidden',  // Hidden class name.
+	inClass:     'in',      // Class used to transition stuff in.
 	place:       'top',     // Default place.
 	auto:        0          // Whether to automatically adjust place to fit into window.
 };
