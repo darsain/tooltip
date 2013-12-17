@@ -252,7 +252,7 @@ Tooltip.prototype.place = function (place) {
  *
  * @return {Tooltip}
  */
-Tooltip.prototype.attachTo = function (element) {
+Tooltip.prototype.attach = function (element) {
 	this.attachedTo = element;
 	if (!this.hidden) {
 		this.position();
