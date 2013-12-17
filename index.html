@@ -176,6 +176,35 @@
 			<p>When isolating issues on jsfiddle, use the <a href="http://darsain.github.io/tooltip/dist/tooltip.js"><code>tooltip.js</code></a> URL above.</p>
 		</section>
 
+		<section data-point="usage" data-title="Usage examples">
+			<h2>Usage examples</h2>
+
+			<p>When using component:</p>
+
+			<pre><code data-language="javascript">var Tooltip = require('tooltip');</code></pre>
+
+			<p>Create a simple text tooltip, position somewhere on a page and show:</p>
+
+			<pre><code data-language="javascript">var tip = new Tooltip('Foo bar!');
+tip.position(200, 200).show();</code></pre>
+
+			<p>Use image element as content:</p>
+
+			<pre><code data-language="javascript">var img = document.createElement('img');
+img.src = 'http://foo.com/bar.jpg';
+img.width = '64';
+img.height = '64';
+tip.content(img);</code></pre>
+
+			<p>Position tooltip while using element as a target:</p>
+
+			<pre><code data-language="javascript">tip.position(document.querySelector('.target'));</code></pre>
+
+			<p>Change tooltip type and effect:</p>
+
+			<pre><code data-language="javascript">tip.type('error').effect('fade');</code></pre>
+		</section>
+
 		<section data-point="documentation" data-title="Documentation">
 			<h2>Documentation</h2>
 
