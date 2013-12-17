@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 				' * <%= pkg.licenses[0].url %>\n' +
 				' */\n',
 			bannerLight: '/*! <%= pkg.name %> <%= pkg.version %>' +
-				' - <%= grunt.template.today("dS mmm yyyy") %> | <%= pkg.repository.homepage %> */',
+				' - <%= grunt.template.today("dS mmm yyyy") %> | <%= pkg.repository.homepage %> */\n',
 		},
 
 		// JSHint the code.
@@ -44,13 +44,20 @@ module.exports = function(grunt) {
 				src: 'tmp/<%= pkg.name %>.js',
 				dest: 'tmp/<%= pkg.name %>.js',
 			},
+			style: {
+				options: {
+					banner: '<%= meta.bannerLight %>'
+				},
+				src: 'tmp/<%= pkg.name %>.css',
+				dest: 'tmp/<%= pkg.name %>.css',
+			},
 		},
 
 		// Minify files.
 		uglify: {
 			production: {
 				options: {
-					banner: '<%= meta.bannerLight %>\n',
+					banner: '<%= meta.bannerLight %>',
 					report: 'gzip',
 				},
 				src: 'tmp/<%= pkg.name %>.js',
@@ -175,6 +182,7 @@ module.exports = function(grunt) {
 		grunt.task.run('componentbuild:development');
 		grunt.task.run('concat:development');
 		// Distribution
+		grunt.task.run('concat:style');
 		grunt.task.run('copy:dist');
 		grunt.task.run('compress');
 		// Cleanup
