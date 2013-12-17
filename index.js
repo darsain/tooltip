@@ -585,6 +585,7 @@ Tooltip.winAware = [];
 
 // Bind winAware repositioning to window resize event
 evt.bind(window, 'resize', Tooltip.reposition);
+evt.bind(window, 'scroll', Tooltip.reposition);
 
 /**
  * Array with dynamic class types.
