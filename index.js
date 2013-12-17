@@ -196,7 +196,7 @@ Tooltip.prototype.updateSize = function () {
 	this.width = this.element.offsetWidth;
 	this.height = this.element.offsetHeight;
 	if (this.spacing == null) {
-		this.spacing = parsePx(style(this.element, 'top'));
+		this.spacing = this.options.spacing != null ? this.options.spacing : parsePx(style(this.element, 'top'));
 	}
 	if (this.hidden) {
 		body.removeChild(this.element);
@@ -605,5 +605,6 @@ Tooltip.defaults = {
 	effectClass: null,      // Effect tooltip class name.
 	inClass:     'in',      // Class used to transition stuff in.
 	place:       'top',     // Default place.
+	spacing:     null,      // Gap between target and tooltip.
 	auto:        0          // Whether to automatically adjust place to fit into window.
 };
