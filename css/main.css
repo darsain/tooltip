@@ -1,0 +1,79 @@
+/* Header style */
+header.projecttitle { margin: 0 auto; padding: 115px 0 100px; color: #fff; text-shadow: 1px 1px 0 rgba(0,0,0,.3); background-color: #545260; }
+header .projectname { text-shadow: 2px 2px 0 rgba(0,0,0,.3); }
+.download { margin-top: -45px; }
+
+/* Color theme */
+a,
+ul.grid li a,
+.download a:hover,
+.repos ul li a:hover { color: #d99241; }
+
+.chromeframe,
+.download a,
+ul.grid li a:hover,
+.mainnav ul li.active a,
+.license:hover { background: #e89c46; }
+
+.license:hover:before,
+.mainnav ul li.active a:before { border-right-color: #e89c46; }
+.download a.repo:before,
+.license:hover:after { border-left-color: #e89c46; }
+
+/* Dark bg */
+.download h2,
+.download h3,
+.license { background: #38393d; }
+
+.download h2:before,
+.license:before { border-right-color: #38393d; }
+.download h2:after,
+.license:after { border-left-color: #38393d; }
+
+/* Example */
+.example { margin: 80px auto 40px; }
+
+.example .target {
+	position: relative;
+	width: 100px;
+	line-height: 50px;
+	margin: 10px 5px;
+	text-align: center;
+	text-shadow: 1px 1px rgba(0,0,0,.2);
+	border: 1px dashed rgba(255,255,255,.5);
+	border-radius: 3px;
+	background: inherit;
+}
+.example .target.movable { cursor: move; }
+.example .target.spaced { margin: 120px auto 40px; }
+
+/* Example controls */
+.controls { position: relative; text-align: center; }
+.controls .col { display: inline-block; margin: 0 5px; }
+
+.controls h4 { padding: .8em 0 0; font-family: Georgia, serif; font-weight: normal; font-style: italic; }
+
+.controls button { padding: 10px 20px; color: #aaa; background: none; border: 0; border-radius: 2px; font-family: monospace; }
+.controls button:hover { color: #fff; }
+.controls button:active,
+.controls button:focus { outline: 0; }
+.controls button.active { color: #222; background: #fff; }
+
+.controls button.static { color: #222; background: #b5d4e3; }
+.controls button.static:hover { background: #fff; }
+.controls button.static:active { color: #fff; background: #444; }
+
+.controls .group { display: inline-block; padding: 2px; background: #333; background: rgba(0,0,0,.2); border-radius: 3px; }
+
+.controls .places button { display: block; padding-left: 0; padding-right: 0; width: 110px; }
+
+.example .focusable,
+.example .focusable:focus {
+	width: 100px;
+	color: #fff;
+	background: #333;
+	border: 0;
+	border-top: 1px solid #222;
+	border-radius: 2px;
+	background-clip: padding-box;
+}
