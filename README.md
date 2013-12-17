@@ -25,7 +25,7 @@ component install darsain/tooltip
 
 Standalone build of a latest stable version:
 
-- [Archive `tooltip.zip`](http://darsain.github.io/tooltip/dist/tooltip.zip)
+- [`tooltip.zip`](http://darsain.github.io/tooltip/dist/tooltip.zip) - combined archive
 - [`tooltip.js`](http://darsain.github.io/tooltip/dist/tooltip.js) - 25 KB *sourcemapped*
 - [`tooltip.min.js`](http://darsain.github.io/tooltip/dist/tooltip.min.js) - 10 KB, 2KB gzipped
 - [`tooltip.css`](http://darsain.github.io/tooltip/dist/tooltip.css) - 4.5 KB *including transitions & types*
@@ -35,7 +35,7 @@ When isolating issues on jsfiddle, use the [`tooltip.js`](http://darsain.github.
 ## Documentation
 
 - **[Tooltip](https://github.com/darsain/tooltip/wiki/Tooltip)** - `Tooltip` API
-- **[Styling](https://github.com/darsain/tooltip/wiki/Styling)** - styling of tooltip element
+- **[Styling](https://github.com/darsain/tooltip/wiki/Styling)** - styling the tooltip element
 
 ## Contributing
 
