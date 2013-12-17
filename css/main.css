@@ -57,7 +57,7 @@ ul.grid li a:hover,
 .controls button:hover { color: #fff; }
 .controls button:active,
 .controls button:focus { outline: 0; }
-.controls button.active { color: #222; background: #fff; }
+.controls button.active { color: #222; background: #ccc; }
 
 .controls button.static { color: #222; background: #b5d4e3; }
 .controls button.static:hover { background: #fff; }
