@@ -13,7 +13,7 @@ var $ = jQuery;
 	});
 	var dragger = new DragAndReset(target);
 
-	tip.attachTo(target).show();
+	tip.attach(target).show();
 
 	dragger.onMove = function reposition() {
 		tip.position();
@@ -38,7 +38,7 @@ var $ = jQuery;
 		place: 'right',
 		typeClass: 'light',
 		effectClass: 'slide'
-	}).attachTo($target[0]);
+	}).attach($target[0]);
 	var value = '';
 	var correct;
 

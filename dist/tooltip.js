@@ -771,7 +771,7 @@ Tooltip.prototype.place = function (place) {\n\
  *\n\
  * @return {Tooltip}\n\
  */\n\
-Tooltip.prototype.attachTo = function (element) {\n\
+Tooltip.prototype.attach = function (element) {\n\
 \tthis.attachedTo = element;\n\
 \tif (!this.hidden) {\n\
 \t\tthis.position();\n\
