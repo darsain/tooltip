@@ -73,28 +73,28 @@
 	transform: translateY(-60%) translateX(-40%) scale(0);
 }
 .tooltip.grow.left {
-	-webkit-transform: translateX(40%) scale(0);
-	transform: translateX(40%) scale(0);
+	-webkit-transform: translateX(53%) scale(0);
+	transform: translateX(53%) scale(0);
 }
 .tooltip.grow.left-top {
-	-webkit-transform: translateX(60%) translateY(40%) scale(0);
-	transform: translateX(60%) translateY(40%) scale(0);
+	-webkit-transform: translateX(53%) translateY(40%) scale(0);
+	transform: translateX(53%) translateY(40%) scale(0);
 }
 .tooltip.grow.left-bottom {
-	-webkit-transform: translateX(60%) translateY(-40%) scale(0);
-	transform: translateX(60%) translateY(-40%) scale(0);
+	-webkit-transform: translateX(53%) translateY(-40%) scale(0);
+	transform: translateX(53%) translateY(-40%) scale(0);
 }
 .tooltip.grow.right {
-	-webkit-transform: translateX(-60%) scale(0);
-	transform: translateX(-60%) scale(0);
+	-webkit-transform: translateX(-53%) scale(0);
+	transform: translateX(-53%) scale(0);
 }
 .tooltip.grow.right-top {
-	-webkit-transform: translateX(-60%) translateY(40%) scale(0);
-	transform: translateX(-60%) translateY(40%) scale(0);
+	-webkit-transform: translateX(-53%) translateY(40%) scale(0);
+	transform: translateX(-53%) translateY(40%) scale(0);
 }
 .tooltip.grow.right-bottom {
-	-webkit-transform: translateX(-60%) translateY(-40%) scale(0);
-	transform: translateX(-60%) translateY(-40%) scale(0);
+	-webkit-transform: translateX(-53%) translateY(-40%) scale(0);
+	transform: translateX(-53%) translateY(-40%) scale(0);
 }
 .tooltip.grow.in {
 	-webkit-transform: none;
