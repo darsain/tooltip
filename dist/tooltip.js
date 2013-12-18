@@ -1,5 +1,5 @@
 /*!
- * tooltip 0.1.0 - 17th Dec 2013
+ * tooltip 0.1.0 - 18th Dec 2013
  * https://github.com/darsain/tooltip
  *
  * Licensed under the MIT license.
@@ -885,13 +885,16 @@ Tooltip.prototype.position = function (x, y) {\n\
 \t\theight: 0\n\
 \t} : position(x);\n\
 \tvar spacing = this.spacing;\n\
+\tvar newPlace = this._pickPlace(target);\n\
 \n\
-\t// Pick the place and adjust className accordingly\n\
-\tif (this.curPlace) {\n\
-\t\tthis.classes.remove(this.curPlace);\n\
+\t// Add/Change place class when necessary\n\
+\tif (newPlace !== this.curPlace) {\n\
+\t\tif (this.curPlace) {\n\
+\t\t\tthis.classes.remove(this.curPlace);\n\
+\t\t}\n\
+\t\tthis.classes.add(newPlace);\n\
+\t\tthis.curPlace = newPlace;\n\
 \t}\n\
-\tthis.curPlace = this._pickPlace(target);\n\
-\tthis.classes.add(this.curPlace);\n\
 \n\
 \t// Position the tip\n\
 \tvar top, left;\n\
