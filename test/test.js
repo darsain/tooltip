@@ -9,7 +9,7 @@ var $ = require('jquery');
 	var tip = window.tip = new Tooltip('Move the element toward window endges to test the automatic positioning.', { auto: 1 });
 	var dragger = new DragAndReset(target);
 
-	tip.attachTo(target).show();
+	tip.attach(target).show();
 
 	dragger.onMove = function reposition() {
 		tip.position();
@@ -26,7 +26,7 @@ var $ = require('jquery');
 // Focusable test
 (function () {
 	var $target = $('.focusable').eq(0);
-	var tip = new Tooltip('', { place: 'right', typeClass: '', effectClass: 'slide' }).attachTo($target[0]);
+	var tip = new Tooltip('', { place: 'right', typeClass: '', effectClass: 'slide' }).attach($target[0]);
 	var toEnter = 'foo';
 	var value, correct;
 
