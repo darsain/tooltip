@@ -366,13 +366,16 @@ Tooltip.prototype.position = function (x, y) {
 		height: 0
 	} : position(x);
 	var spacing = this.spacing;
+	var newPlace = this._pickPlace(target);
 
-	// Pick the place and adjust className accordingly
-	if (this.curPlace) {
-		this.classes.remove(this.curPlace);
+	// Add/Change place class when necessary
+	if (newPlace !== this.curPlace) {
+		if (this.curPlace) {
+			this.classes.remove(this.curPlace);
+		}
+		this.classes.add(newPlace);
+		this.curPlace = newPlace;
 	}
-	this.curPlace = this._pickPlace(target);
-	this.classes.add(this.curPlace);
 
 	// Position the tip
 	var top, left;
