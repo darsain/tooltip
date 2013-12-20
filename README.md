@@ -1,6 +1,11 @@
 # [Tooltip](http://darsa.in/tooltip)
 
-JavaScript library for tooltips designed for speed and responsiveness. Uses CSS transitions for effects.
+JavaScript library for basic tooltip implementation.
+
+Tooltip doesn't provide bindings to user interaction (like displaying on hover). It is designed to be consumed by
+wrappers like [`darsain/tooltips`](https://github.com/darsain/tooltips), form validation libraries, etc.
+
+Supports typed classes, and effects via seamless CSS transitions (you don't have to define transition durations in JavaScript).
 
 #### Compatibility
 
