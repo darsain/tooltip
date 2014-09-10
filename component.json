@@ -10,6 +10,7 @@
 	],
 	"dependencies": {
 		"darsain/event": "*",
+		"darsain/extend": "*",
 		"darsain/position": "*",
 		"component/classes": "*",
 		"component/indexof": "*"

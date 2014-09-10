@@ -4,6 +4,7 @@
  * Dependencies.
  */
 var evt = require('event');
+var extend = require('extend');
 var classes = require('classes');
 var indexOf = require('indexof');
 var position = require('position');
@@ -20,36 +21,6 @@ var verticalPlaces = ['top', 'bottom'];
  * Transport.
  */
 module.exports = Tooltip;
-
-/**
- * Prototypal inheritance.
- *
- * @param {Object} o
- *
- * @return {Object}
- */
-var objectCreate = Object.create || (function () {
-	function F() {}
-	return function (o) {
-		F.prototype = o;
-		return new F();
-	};
-})();
-
-/**
- * Poor man's shallow object extend.
- *
- * @param {Object} a
- * @param {Object} b
- *
- * @return {Object}
- */
-function extend(a, b) {
-	for (var key in b) {
-		a[key] = b[key];
-	}
-	return a;
-}
 
 /**
  * Parse integer from strings like '-50px'.
@@ -118,7 +89,7 @@ function Tooltip(content, options) {
 		return new Tooltip(content, options);
 	}
 	this.hidden = 1;
-	this.options = extend(objectCreate(Tooltip.defaults), options);
+	this.options = extend(true, {}, Tooltip.defaults, options);
 	this._createElement();
 	this.content(content);
 }
