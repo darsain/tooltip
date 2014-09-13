@@ -1,25 +1,14 @@
-'use strict';
-
-/**
- * Dependencies.
- */
 var evt = require('event');
 var extend = require('extend');
 var classes = require('classes');
 var indexOf = require('indexof');
 var position = require('position');
 
-/**
- * Globals.
- */
 var win = window;
 var doc = win.document;
 var body = doc.body;
 var verticalPlaces = ['top', 'bottom'];
 
-/**
- * Transport.
- */
 module.exports = Tooltip;
 
 /**
@@ -58,9 +47,7 @@ function transitionDuration(element) {
 	var match = duration.match(/([0-9.]+)([ms]{1,2})/);
 	if (match) {
 		duration = Number(match[1]);
-		if (match[2] === 's') {
-			duration *= 1000;
-		}
+		if (match[2] === 's') duration *= 1000;
 	}
 	return 0|duration;
 }
@@ -70,9 +57,7 @@ transitionDuration.propName = (function () {
 	var value = '1s';
 	for (var i = 0; i < names.length; i++) {
 		element.style[names[i]] = value;
-		if (element.style[names[i]] === value) {
-			return names[i];
-		}
+		if (element.style[names[i]] === value) return names[i];
 	}
 }());
 
@@ -85,9 +70,7 @@ transitionDuration.propName = (function () {
  * @return {Tooltip}
  */
 function Tooltip(content, options) {
-	if (!(this instanceof Tooltip)) {
-		return new Tooltip(content, options);
-	}
+	if (!(this instanceof Tooltip)) return new Tooltip(content, options);
 	this.hidden = 1;
 	this.options = extend(true, {}, Tooltip.defaults, options);
 	this._createElement();
@@ -106,9 +89,7 @@ Tooltip.prototype._createElement = function () {
 	var propName;
 	for (var i = 0; i < Tooltip.classTypes.length; i++) {
 		propName = Tooltip.classTypes[i] + 'Class';
-		if (this.options[propName]) {
-			this.classes.add(this.options[propName]);
-		}
+		if (this.options[propName]) this.classes.add(this.options[propName]);
 	}
 };
 
@@ -144,13 +125,9 @@ Tooltip.prototype.effect = function (name) {
  */
 Tooltip.prototype.changeClassType = function (propName, newClass) {
 	propName += 'Class';
-	if (this.options[propName]) {
-		this.classes.remove(this.options[propName]);
-	}
+	if (this.options[propName]) this.classes.remove(this.options[propName]);
 	this.options[propName] = newClass;
-	if (newClass) {
-		this.classes.add(newClass);
-	}
+	if (newClass) this.classes.add(newClass);
 	return this;
 };
 
@@ -166,9 +143,9 @@ Tooltip.prototype.updateSize = function () {
 	}
 	this.width = this.element.offsetWidth;
 	this.height = this.element.offsetHeight;
-	if (this.spacing == null) {
-		this.spacing = this.options.spacing != null ? this.options.spacing : parsePx(style(this.element, 'top'));
-	}
+	if (this.spacing == null) this.spacing = this.options.spacing != null
+		? this.options.spacing
+		: parsePx(style(this.element, 'top'));
 	if (this.hidden) {
 		body.removeChild(this.element);
 		this.element.style.visibility = '';
@@ -210,9 +187,7 @@ Tooltip.prototype.content = function (content) {
  */
 Tooltip.prototype.place = function (place) {
 	this.options.place = place;
-	if (!this.hidden) {
-		this.position();
-	}
+	if (!this.hidden) this.position();
 	return this;
 };
 
@@ -225,9 +200,7 @@ Tooltip.prototype.place = function (place) {
  */
 Tooltip.prototype.attach = function (element) {
 	this.attachedTo = element;
-	if (!this.hidden) {
-		this.position();
-	}
+	if (!this.hidden) this.position();
 	return this;
 };
 
@@ -250,60 +223,38 @@ Tooltip.prototype.detach = function () {
  * @return {Tooltip}
  */
 Tooltip.prototype._pickPlace = function (target) {
-	if (!this.options.auto) {
-		return this.options.place;
-	}
+	if (!this.options.auto) return this.options.place;
 	var winPos = position(win);
 	var place = this.options.place.split('-');
 	var spacing = this.spacing;
 
 	if (~indexOf(verticalPlaces, place[0])) {
-		if (target.top - this.height - spacing <= winPos.top) {
-			place[0] = 'bottom';
-		} else if (target.bottom + this.height + spacing >= winPos.bottom) {
-			place[0] = 'top';
-		}
+		if (target.top - this.height - spacing <= winPos.top) place[0] = 'bottom';
+		else if (target.bottom + this.height + spacing >= winPos.bottom) place[0] = 'top';
 		switch (place[1]) {
 			case 'left':
-				if (target.right - this.width <= winPos.left) {
-					place[1] = 'right';
-				}
+				if (target.right - this.width <= winPos.left) place[1] = 'right';
 				break;
 			case 'right':
-				if (target.left + this.width >= winPos.right) {
-					place[1] = 'left';
-				}
+				if (target.left + this.width >= winPos.right) place[1] = 'left';
 				break;
 			default:
-				if (target.left + target.width / 2 + this.width / 2 >= winPos.right) {
-					place[1] = 'left';
-				} else if (target.right - target.width / 2 - this.width / 2 <= winPos.left) {
-					place[1] = 'right';
-				}
+				if (target.left + target.width / 2 + this.width / 2 >= winPos.right) place[1] = 'left';
+				else if (target.right - target.width / 2 - this.width / 2 <= winPos.left) place[1] = 'right';
 		}
 	} else {
-		if (target.left - this.width - spacing <= winPos.left) {
-			place[0] = 'right';
-		} else if (target.right + this.width + spacing >= winPos.right) {
-			place[0] = 'left';
-		}
+		if (target.left - this.width - spacing <= winPos.left) place[0] = 'right';
+		else if (target.right + this.width + spacing >= winPos.right) place[0] = 'left';
 		switch (place[1]) {
 			case 'top':
-				if (target.bottom - this.height <= winPos.top) {
-					place[1] = 'bottom';
-				}
+				if (target.bottom - this.height <= winPos.top) place[1] = 'bottom';
 				break;
 			case 'bottom':
-				if (target.top + this.height >= winPos.bottom) {
-					place[1] = 'top';
-				}
+				if (target.top + this.height >= winPos.bottom) place[1] = 'top';
 				break;
 			default:
-				if (target.top + target.height / 2 + this.height / 2 >= winPos.bottom) {
-					place[1] = 'top';
-				} else if (target.bottom - target.height / 2 - this.height / 2 <= winPos.top) {
-					place[1] = 'bottom';
-				}
+				if (target.top + target.height / 2 + this.height / 2 >= winPos.bottom) place[1] = 'top';
+				else if (target.bottom - target.height / 2 - this.height / 2 <= winPos.top) place[1] = 'bottom';
 		}
 	}
 
@@ -319,9 +270,7 @@ Tooltip.prototype._pickPlace = function (target) {
  * @return {Tooltip}
  */
 Tooltip.prototype.position = function (x, y) {
-	if (this.attachedTo) {
-		x = this.attachedTo;
-	}
+	if (this.attachedTo) x = this.attachedTo;
 	if (x == null && this._p) {
 		x = this._p[0];
 		y = this._p[1];
@@ -341,9 +290,7 @@ Tooltip.prototype.position = function (x, y) {
 
 	// Add/Change place class when necessary
 	if (newPlace !== this.curPlace) {
-		if (this.curPlace) {
-			this.classes.remove(this.curPlace);
-		}
+		if (this.curPlace) this.classes.remove(this.curPlace);
 		this.classes.add(newPlace);
 		this.curPlace = newPlace;
 	}
@@ -426,9 +373,7 @@ Tooltip.prototype.show = function (x, y) {
 	clearTimeout(this.aIndex);
 
 	// Position the element when requested
-	if (x != null) {
-		this.position(x, y);
-	}
+	if (x != null) this.position(x, y);
 
 	// Stop here if tip is already visible
 	if (this.hidden) {
@@ -437,15 +382,11 @@ Tooltip.prototype.show = function (x, y) {
 	}
 
 	// Make tooltip aware of window resize
-	if (this.attachedTo) {
-		this._aware();
-	}
+	if (this.attachedTo) this._aware();
 
 	// Trigger layout and kick in the transition
 	if (this.options.inClass) {
-		if (this.options.effectClass) {
-			void this.element.clientHeight;
-		}
+		if (this.options.effectClass) void this.element.clientHeight;
 		this.classes.add(this.options.inClass);
 	}
 
@@ -458,9 +399,7 @@ Tooltip.prototype.show = function (x, y) {
  * @return {Tooltip}
  */
 Tooltip.prototype.hide = function () {
-	if (this.hidden) {
-		return;
-	}
+	if (this.hidden) return;
 
 	var self = this;
 	var duration = 0;
@@ -468,15 +407,11 @@ Tooltip.prototype.hide = function () {
 	// Remove .in class and calculate transition duration if any
 	if (this.options.inClass) {
 		this.classes.remove(this.options.inClass);
-		if (this.options.effectClass) {
-			duration = transitionDuration(this.element);
-		}
+		if (this.options.effectClass) duration = transitionDuration(this.element);
 	}
 
 	// Remove tip from window resize awareness
-	if (this.attachedTo) {
-		this._unaware();
-	}
+	if (this.attachedTo) this._unaware();
 
 	// Remove the tip from the DOM when transition is done
 	clearTimeout(this.aIndex);
@@ -496,9 +431,7 @@ Tooltip.prototype.toggle = function (x, y) {
 Tooltip.prototype.destroy = function () {
 	clearTimeout(this.aIndex);
 	this._unaware();
-	if (!this.hidden) {
-		body.removeChild(this.element);
-	}
+	if (!this.hidden) body.removeChild(this.element);
 	this.element = this.options = null;
 };
 
@@ -509,9 +442,7 @@ Tooltip.prototype.destroy = function () {
  */
 Tooltip.prototype._aware = function () {
 	var index = indexOf(Tooltip.winAware, this);
-	if (!~index) {
-		Tooltip.winAware.push(this);
-	}
+	if (!~index) Tooltip.winAware.push(this);
 };
 
 /**
@@ -521,9 +452,7 @@ Tooltip.prototype._aware = function () {
  */
 Tooltip.prototype._unaware = function () {
 	var index = indexOf(Tooltip.winAware, this);
-	if (~index) {
-		Tooltip.winAware.splice(index, 1);
-	}
+	if (~index) Tooltip.winAware.splice(index, 1);
 };
 
 /**
@@ -538,9 +467,7 @@ Tooltip.reposition = (function () {
 	var rIndex;
 
 	function requestReposition() {
-		if (rIndex || !Tooltip.winAware.length) {
-			return;
-		}
+		if (rIndex || !Tooltip.winAware.length) return;
 		rIndex = rAF(reposition, 17);
 	}
 
