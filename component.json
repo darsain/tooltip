@@ -9,17 +9,22 @@
 		"ui"
 	],
 	"dependencies": {
+		"darsain/fuse": "*",
+		"darsain/raft": "*",
 		"darsain/event": "*",
 		"darsain/extend": "*",
 		"darsain/position": "*",
+		"darsain/parse-number": "*",
 		"component/classes": "*",
-		"component/indexof": "*"
+		"component/indexof": "*",
+		"jkroso/computed-style": "*"
 	},
 	"development": {
 		"components/jquery": "1.10.2"
 	},
 	"scripts": [
-		"index.js"
+		"index.js",
+		"lib/tduration.js"
 	],
 	"styles": [
 		"tooltip.css",
