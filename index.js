@@ -1,8 +1,11 @@
+var style = require('computed-style');
 var evt = require('event');
 var extend = require('extend');
 var classes = require('classes');
 var indexOf = require('indexof');
 var position = require('position');
+var parseNumber = require('parse-number');
+var transitionDuration = require('./lib/tduration');
 
 var win = window;
 var doc = win.document;
@@ -10,56 +13,6 @@ var body = doc.body;
 var verticalPlaces = ['top', 'bottom'];
 
 module.exports = Tooltip;
-
-/**
- * Parse integer from strings like '-50px'.
- *
- * @param {Mixed} value
- *
- * @return {Integer}
- */
-function parsePx(value) {
-	return 0 | Math.round(String(value).replace(/[^\-0-9.]/g, ''));
-}
-
-/**
- * Get computed style of element.
- *
- * @param {Element} element
- *
- * @type {String}
- */
-var style = win.getComputedStyle ? function style(element, name) {
-	return win.getComputedStyle(element, null)[name];
-} : function style(element, name) {
-	return element.currentStyle[name];
-};
-
-/**
- * Returns transition duration of element in ms.
- *
- * @param {Element} element
- *
- * @return {Int}
- */
-function transitionDuration(element) {
-	var duration = String(style(element, transitionDuration.propName));
-	var match = duration.match(/([0-9.]+)([ms]{1,2})/);
-	if (match) {
-		duration = Number(match[1]);
-		if (match[2] === 's') duration *= 1000;
-	}
-	return 0|duration;
-}
-transitionDuration.propName = (function () {
-	var element = doc.createElement('div');
-	var names = ['transitionDuration', 'webkitTransitionDuration'];
-	var value = '1s';
-	for (var i = 0; i < names.length; i++) {
-		element.style[names[i]] = value;
-		if (element.style[names[i]] === value) return names[i];
-	}
-}());
 
 /**
  * Tooltip construnctor.
@@ -145,7 +98,7 @@ Tooltip.prototype.updateSize = function () {
 	this.height = this.element.offsetHeight;
 	if (this.spacing == null) this.spacing = this.options.spacing != null
 		? this.options.spacing
-		: parsePx(style(this.element, 'top'));
+		: parseNumber(style(this.element).top);
 	if (this.hidden) {
 		body.removeChild(this.element);
 		this.element.style.visibility = '';
