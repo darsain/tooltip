@@ -17,17 +17,21 @@ module.exports = Tooltip;
 /**
  * Tooltip construnctor.
  *
- * @param {String|Element} content
- * @param {Object}         options
+ * @param {String|Element} [content]
+ * @param {Object}         [options]
  *
  * @return {Tooltip}
  */
 function Tooltip(content, options) {
 	if (!(this instanceof Tooltip)) return new Tooltip(content, options);
+	if (typeof content === 'object' && content.nodeType == null) {
+		options = content;
+		content = null;
+	}
 	this.hidden = 1;
 	this.options = extend(true, {}, Tooltip.defaults, options);
 	this._createElement();
-	this.content(content);
+	if (content) this.content(content);
 }
 
 /**
