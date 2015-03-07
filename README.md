@@ -14,10 +14,6 @@ Basic support starts at IE8, but Tooltip arrows are styled for IE9+. If you want
 
 Other browsers just work.
 
-### [Changelog](https://github.com/darsain/tooltip/releases)
-
-Upholds the [Semantic Versioning Specification](http://semver.org/).
-
 ## Install
 
 [Component](https://github.com/component/component):
@@ -39,12 +35,7 @@ When isolating issues on jsfiddle, use the [`tooltip.js`](http://darsain.github.
 
 ## Documentation
 
-- **[Tooltip](https://github.com/darsain/tooltip/wiki/Tooltip)** - `Tooltip` API
-- **[Styling](https://github.com/darsain/tooltip/wiki/Styling)** - styling the tooltip element
-
-## Contributing
-
-Please, read the [Contributing Guidelines](CONTRIBUTING.md) for this project.
+Documentaion is in **[docs](docs)**.
 
 ## License
 
