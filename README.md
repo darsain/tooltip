@@ -7,10 +7,10 @@ wrappers like [`darsain/tooltips`](https://github.com/darsain/tooltips), form va
 
 Supports typed classes, and effects via seamless CSS transitions (you don't have to define transition durations in JavaScript).
 
-#### Compatibility
+#### Support
 
-Basic support starts at IE8, but Tooltip arrows are styled for IE9+. If you want IE8 support, just restyle the
-`.tooltip:after` with IE8 in mind.
+Starts at IE8, but Tooltip arrows are styled for IE9+. If you care, just restyle the
+`.tooltip:after` arrow with IE8 in mind.
 
 Other browsers just work.
 
@@ -35,7 +35,7 @@ When isolating issues on jsfiddle, use the [`tooltip.js`](http://darsain.github.
 
 ## Documentation
 
-Documentaion is in **[docs](docs)**.
+Can be found in the **[docs](docs)** directory.
 
 ## License
 
