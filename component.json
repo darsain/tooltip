@@ -9,13 +9,13 @@
 		"ui"
 	],
 	"dependencies": {
-		"darsain/fuse": "*",
-		"darsain/raft": "*",
-		"darsain/event": "*",
-		"darsain/extend": "*",
-		"darsain/position": "*",
-		"darsain/parse-number": "*",
-		"component/classes": "*",
+		"darsain/fuse": "^1.0.0",
+		"darsain/raft": "^1.0.0",
+		"darsain/event": "^1.0.0",
+		"darsain/extend": "^1.0.0",
+		"darsain/position": "^1.0.0",
+		"darsain/parse-number": "^1.0.0",
+		"component/classes": "^1.0.0",
 		"component/indexof": "*",
 		"jkroso/computed-style": "*"
 	},
