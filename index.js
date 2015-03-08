@@ -35,7 +35,7 @@ function Tooltip(content, options) {
 }
 
 /**
- * Creates a tooltip element.
+ * Creates a Tooltip element.
  *
  * @return {Void}
  */
@@ -52,7 +52,7 @@ Tooltip.prototype._createElement = function () {
 };
 
 /**
- * Changes tooltip's type class type.
+ * Changes Tooltip's type class type.
  *
  * @param {String} name
  *
@@ -63,7 +63,7 @@ Tooltip.prototype.type = function (name) {
 };
 
 /**
- * Changes tooltip's effect class type.
+ * Changes Tooltip's effect class type.
  *
  * @param {String} name
  *
@@ -90,7 +90,7 @@ Tooltip.prototype.changeClassType = function (propName, newClass) {
 };
 
 /**
- * Updates tooltip's dimensions.
+ * Updates Tooltip's dimensions.
  *
  * @return {Tooltip}
  */
@@ -114,10 +114,10 @@ Tooltip.prototype.updateSize = function () {
 };
 
 /**
- * Change tooltip content.
+ * Change Tooltip content.
  *
- * When tooltip is visible, its size is automatically
- * synced and tooltip correctly repositioned.
+ * When Tooltip is visible, its size is automatically
+ * synced and Tooltip correctly repositioned.
  *
  * @param {String|Element} content
  *
@@ -135,9 +135,9 @@ Tooltip.prototype.content = function (content) {
 };
 
 /**
- * Pick new place tooltip should be displayed at.
+ * Pick new place Tooltip should be displayed at.
  *
- * When the tooltip is visible, it is automatically positioned there.
+ * When the Tooltip is visible, it is automatically positioned there.
  *
  * @param {String} place
  *
@@ -150,7 +150,7 @@ Tooltip.prototype.place = function (place) {
 };
 
 /**
- * Attach tooltip to an element.
+ * Attach Tooltip to an element.
  *
  * @param {Element} element
  *
@@ -163,7 +163,7 @@ Tooltip.prototype.attach = function (element) {
 };
 
 /**
- * Detach tooltip from element.
+ * Detach Tooltip from element.
  *
  * @return {Tooltip}
  */
@@ -317,7 +317,7 @@ Tooltip.prototype.position = function (x, y) {
 };
 
 /**
- * Show the tooltip.
+ * Show the Tooltip.
  *
  * @param {Integer|Element} x
  * @param {Integer}         y
@@ -339,7 +339,7 @@ Tooltip.prototype.show = function (x, y) {
 		body.appendChild(this.element);
 	}
 
-	// Make tooltip aware of window resize
+	// Make Tooltip aware of window resize
 	if (this.attachedTo) this._aware();
 
 	// Trigger layout and kick in the transition
@@ -352,7 +352,7 @@ Tooltip.prototype.show = function (x, y) {
 };
 
 /**
- * Hide the tooltip.
+ * Hide the Tooltip.
  *
  * @return {Tooltip}
  */
@@ -382,19 +382,19 @@ Tooltip.prototype.hide = function () {
 	return this;
 };
 
+/**
+ * Hide Tooltip when shown, or show when hidden.
+ *
+ * @param  {Integer|Element} x
+ * @param  {Integer}         y
+ * @return {Tooltip}
+ */
 Tooltip.prototype.toggle = function (x, y) {
 	return this[this.hidden ? 'show' : 'hide'](x, y);
 };
 
-Tooltip.prototype.destroy = function () {
-	clearTimeout(this.aIndex);
-	this._unaware();
-	if (!this.hidden) body.removeChild(this.element);
-	this.element = this.options = null;
-};
-
 /**
- * Make the tip window resize aware.
+ * Make the Tooltip window resize aware.
  *
  * @return {Void}
  */
@@ -414,7 +414,17 @@ Tooltip.prototype._unaware = function () {
 };
 
 /**
- * Handles repositioning of tooltips on window resize.
+ * Destroy Tooltip instance.
+ */
+Tooltip.prototype.destroy = function () {
+	clearTimeout(this.aIndex);
+	this._unaware();
+	if (!this.hidden) body.removeChild(this.element);
+	this.element = this.options = null;
+};
+
+/**
+ * Handles repositioning of Tooltips on window resize.
  *
  * @return {Void}
  */
@@ -459,12 +469,12 @@ Tooltip.classTypes = ['type', 'effect'];
  * @type {Object}
  */
 Tooltip.defaults = {
-	baseClass:   'tooltip', // Base tooltip class name.
-	typeClass:   null,      // Type tooltip class name.
-	effectClass: null,      // Effect tooltip class name.
+	baseClass:   'tooltip', // Base Tooltip class name.
+	typeClass:   null,      // Type Tooltip class name.
+	effectClass: null,      // Effect Tooltip class name.
 	inClass:     'in',      // Class used to transition stuff in.
 	place:       'top',     // Default place.
-	spacing:     null,      // Gap between target and tooltip.
-	interactive: false,     // Whether tooltip should be interactive, or click through.
+	spacing:     null,      // Gap between target and Tooltip.
+	interactive: false,     // Whether Tooltip should be interactive, or click through.
 	auto:        0          // Whether to automatically adjust place to fit into window.
 };
