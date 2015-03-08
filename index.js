@@ -43,6 +43,7 @@ Tooltip.prototype._createElement = function () {
 	this.element = doc.createElement('div');
 	this.classes = classes(this.element);
 	this.classes.add(this.options.baseClass);
+	this.element.style.pointerEvents = this.options.interactive ? 'auto' : 'none';
 	var propName;
 	for (var i = 0; i < Tooltip.classTypes.length; i++) {
 		propName = Tooltip.classTypes[i] + 'Class';
@@ -464,5 +465,6 @@ Tooltip.defaults = {
 	inClass:     'in',      // Class used to transition stuff in.
 	place:       'top',     // Default place.
 	spacing:     null,      // Gap between target and tooltip.
+	interactive: false,     // Whether tooltip should be interactive, or click through.
 	auto:        0          // Whether to automatically adjust place to fit into window.
 };
