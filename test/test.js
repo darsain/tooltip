@@ -1,5 +1,3 @@
-'use strict';
-
 var Tooltip = require('tooltip');
 var $ = require('jquery');
 
