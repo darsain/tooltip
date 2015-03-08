@@ -28,7 +28,7 @@ function Tooltip(content, options) {
 		options = content;
 		content = null;
 	}
-	this.hidden = 1;
+	this.hidden = true;
 	this.options = extend(true, {}, Tooltip.defaults, options);
 	this._createElement();
 	if (content) this.content(content);
@@ -335,7 +335,7 @@ Tooltip.prototype.show = function (x, y) {
 
 	// Stop here if tip is already visible
 	if (this.hidden) {
-		this.hidden = 0;
+		this.hidden = false;
 		body.appendChild(this.element);
 	}
 
@@ -376,7 +376,7 @@ Tooltip.prototype.hide = function () {
 	this.aIndex = setTimeout(function () {
 		self.aIndex = 0;
 		body.removeChild(self.element);
-		self.hidden = 1;
+		self.hidden = true;
 	}, duration);
 
 	return this;
