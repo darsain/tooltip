@@ -169,7 +169,7 @@ Tooltip.prototype.attach = function (element) {
  */
 Tooltip.prototype.detach = function () {
 	this.hide();
-	this.attachedTo = null;
+	delete this.attachedTo;
 	return this;
 };
 
@@ -220,7 +220,7 @@ Tooltip.prototype._pickPlace = function (target) {
 };
 
 /**
- * Position the element to an element or a specific coordinates.
+ * Position the Tooltip to an element or a specific coordinates.
  *
  * @param {Integer|Element} x
  * @param {Integer}         y
@@ -228,7 +228,7 @@ Tooltip.prototype._pickPlace = function (target) {
  * @return {Tooltip}
  */
 Tooltip.prototype.position = function (x, y) {
-	if (this.attachedTo) x = this.attachedTo;
+	x = this.attachedTo || x;
 	if (x == null && this._p) {
 		x = this._p[0];
 		y = this._p[1];
@@ -319,19 +319,14 @@ Tooltip.prototype.position = function (x, y) {
 /**
  * Show the Tooltip.
  *
- * @param {Integer|Element} x
- * @param {Integer}         y
- *
  * @return {Tooltip}
  */
-Tooltip.prototype.show = function (x, y) {
-	x = this.attachedTo ? this.attachedTo : x;
-
+Tooltip.prototype.show = function () {
 	// Clear potential ongoing animation
 	clearTimeout(this.aIndex);
 
-	// Position the element when requested
-	if (x != null) this.position(x, y);
+	// Position the element when needed
+	if (this.attachedTo) this.position(this.attachedTo);
 
 	// Stop here if tip is already visible
 	if (this.hidden) {
@@ -385,12 +380,10 @@ Tooltip.prototype.hide = function () {
 /**
  * Hide Tooltip when shown, or show when hidden.
  *
- * @param  {Integer|Element} x
- * @param  {Integer}         y
  * @return {Tooltip}
  */
-Tooltip.prototype.toggle = function (x, y) {
-	return this[this.hidden ? 'show' : 'hide'](x, y);
+Tooltip.prototype.toggle = function () {
+	return this[this.hidden ? 'show' : 'hide']();
 };
 
 /**
