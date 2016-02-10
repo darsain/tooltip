@@ -22,6 +22,12 @@ Other browsers just work.
 component install darsain/tooltip
 ```
 
+[npm](https://www.npmjs.com/package/tau-tooltip):
+
+```bash
+npm install tau-tooltip
+```
+
 ## Download
 
 Standalone build of a latest stable version:
