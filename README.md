@@ -22,6 +22,12 @@ Other browsers just work.
 component install darsain/tooltip
 ```
 
+[npm](https://www.npmjs.com/package/tooltip-js):
+
+```bash
+npm install tooltip-js
+```
+
 ## Download
 
 Standalone build of a latest stable version:
